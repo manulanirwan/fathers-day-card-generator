@@ -1,0 +1,290 @@
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgB4fE89aRp7x4RIhAmFgOAvdQ41E74IOCMWA-gJhWNjXXJqGtRoPdy8lOpy2T3nQc-C9IBYUYUIVFqYisznv4IMsVcpP5NB4ajBcY_G4tiL5uJQjBO2brLvDFQ-lc9euYHFjkhtqH8gbdjnOTV0Rum8xFsyn3XEmEqSZsM1eygg_oOyM7KiYXHkbVQyys/s1600/ChatGPT%20Image%20May%2029,%202026,%2005_20_26%20PM.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" data-original-height="1254" data-original-width="1254" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgB4fE89aRp7x4RIhAmFgOAvdQ41E74IOCMWA-gJhWNjXXJqGtRoPdy8lOpy2T3nQc-C9IBYUYUIVFqYisznv4IMsVcpP5NB4ajBcY_G4tiL5uJQjBO2brLvDFQ-lc9euYHFjkhtqH8gbdjnOTV0Rum8xFsyn3XEmEqSZsM1eygg_oOyM7KiYXHkbVQyys/s1600/ChatGPT%20Image%20May%2029,%202026,%2005_20_26%20PM.png"/></a></div><div class="dad-maker-wrapper">
+    <h2 class="dad-title">Father's Day Card Generator</h2>
+    <p class="dad-subtitle">Upload a memorable photo, pick an elegant card frame, and write a custom appreciation message for your dad!</p>
+
+    <div class="dad-input-group">
+        <label for="userGreeting" class="dad-label">Your Custom Message:</label>
+        <input type="text" id="userGreeting" placeholder="Type a message..." value="To the most incredible Dad, thank you for everything. Happy Father's Day!">
+    </div>
+
+    <div class="dad-input-group">
+        <label for="imageUpload" class="dad-label">Upload Dad's Photo:</label>
+        <input type="file" id="imageUpload" accept="image/*">
+    </div>
+
+    <label class="dad-label">Choose Card Style Frame:</label>
+    <div class="dad-template-grid" id="dadTemplateGrid">
+        <div class="dad-item active" onclick="changeFrame(0)">Classic Navy</div>
+        <div class="dad-item" onclick="changeFrame(1)">Executive Gold</div>
+        <div class="dad-item" onclick="changeFrame(2)">Forest Minimal</div>
+        <div class="dad-item" onclick="changeFrame(3)">Vintage Charcoal</div>
+    </div>
+
+    <div id="preview-container">
+        <canvas id="dadCanvas" width="600" height="600"></canvas>
+    </div>
+
+    <button class="dad-btn-download" id="downloadDadBtn">Download Father's Day Card</button>
+</div>
+
+<style>
+    /* Scoped layout rules to blend with your Blogger light theme layout */
+    .dad-maker-wrapper {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: transparent;
+    }
+    .dad-title {
+        color: #1e3a8a !important; /* Deep Royal Blue Accent Header */
+        text-align: center;
+        font-size: 26px !important;
+        margin-bottom: 5px !important;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .dad-subtitle {
+        font-size: 14px;
+        color: #555;
+        text-align: center;
+        margin-bottom: 25px;
+        line-height: 1.5;
+    }
+    .dad-input-group {
+        margin-bottom: 20px;
+    }
+    .dad-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #1e40af;
+        text-align: left;
+        font-size: 14px;
+    }
+    #userGreeting, #imageUpload {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 2px solid #93c5fd;
+        background: #fff;
+        color: #333;
+        box-sizing: border-box;
+        font-size: 15px;
+    }
+    #userGreeting:focus {
+        border-color: #1e3a8a;
+        outline: none;
+    }
+    .dad-template-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+    .dad-item {
+        cursor: pointer;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 12px 5px;
+        background: #f8fafc;
+        text-align: center;
+        font-size: 13px;
+        color: #444;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    .dad-item:hover {
+        background: #dbeafe;
+        border-color: #60a5fa;
+    }
+    .dad-item.active {
+        border-color: #1e3a8a;
+        background: #1e3a8a;
+        color: #fff;
+        font-weight: bold;
+    }
+    #preview-container {
+        margin: 25px 0;
+        display: flex;
+        justify-content: center;
+    }
+    #dadCanvas {
+        max-width: 100%;
+        height: auto !important;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        border: 2px solid #93c5fd;
+        background: #fff;
+    }
+    .dad-btn-download {
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        padding: 14px 20px;
+        font-size: 16px;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 4px 12 rgba(30, 58, 138, 0.3);
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: transform 0.2s;
+    }
+    .dad-btn-download:hover {
+        transform: scale(1.03);
+    }
+    @media (max-width: 480px) {
+        .dad-template-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+</style>
+
+<script>
+    const canvas = document.getElementById('dadCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let uploadedImage = null;
+    let selectedFrameIdx = 0;
+
+    // Premium Masculine Design Configurations
+    const frames = [
+        { name: "Classic Navy", bg: "#F0F4F8", border: "#1E3A8A", accent: "#60A5AF" },
+        { name: "Executive Gold", bg: "#FCFBF7", border: "#B45309", accent: "#D4AF37" },
+        { name: "Forest Minimal", bg: "#F4F7F5", border: "#064E3B", accent: "#A7F3D0" },
+        { name: "Vintage Charcoal", bg: "#F1F5F9", border: "#334155", accent: "#94A3B8" }
+    ];
+
+    // Image Upload Listener Pipeline
+    document.getElementById('imageUpload').addEventListener('change', function(e) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const img = new Image();
+            img.onload = function() {
+                uploadedImage = img;
+                drawCard();
+            };
+            img.src = event.target.result;
+        };
+        if(e.target.files[0]) {
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+
+    function changeFrame(index) {
+        document.querySelector('.dad-item.active').classList.remove('active');
+        document.getElementsByClassName('dad-item')[index].classList.add('active');
+        selectedFrameIdx = index;
+        drawCard();
+    }
+
+    // Canvas Processing Loop
+    function drawCard() {
+        const frame = frames[selectedFrameIdx];
+        const greetingText = document.getElementById('userGreeting').value || "";
+
+        // 1. Core Card Canvas Background
+        ctx.fillStyle = frame.bg;
+        ctx.fillRect(0, 0, 600, 600);
+
+        // 2. Compute Smart Proportional Cropping Vector
+        if (uploadedImage) {
+            ctx.save();
+            
+            const imgX = 120;
+            const imgY = 100;
+            const imgSize = 360;
+
+            // Clean Rounded Rectangle Clipping Node
+            ctx.beginPath();
+            ctx.roundRect(imgX, imgY, imgSize, imgSize, 12);
+            ctx.clip();
+
+            // Mathematically maintain aspect ratio while centering
+            const minSide = Math.min(uploadedImage.width, uploadedImage.height);
+            const sx = (uploadedImage.width - minSide) / 2;
+            const sy = (uploadedImage.height - minSide) / 2;
+
+            ctx.drawImage(uploadedImage, sx, sy, minSide, minSide, imgX, imgY, imgSize, imgSize);
+            ctx.restore();
+
+            // Fine Contrast Border Profile
+            ctx.strokeStyle = frame.border;
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.roundRect(imgX, imgY, imgSize, imgSize, 12);
+            ctx.stroke();
+        } else {
+            // Interactive UI Empty State Block
+            ctx.fillStyle = frame.accent;
+            ctx.globalAlpha = 0.3;
+            ctx.beginPath();
+            ctx.roundRect(120, 100, 360, 360, 12);
+            ctx.fill();
+            ctx.globalAlpha = 1.0; // Reset alpha
+
+            ctx.fillStyle = frame.border;
+            ctx.font = 'italic 16px "Segoe UI", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText("[ Upload Dad's Photo to Preview ]", 300, 290);
+        }
+
+        // 3. Structural Border Accents
+        ctx.strokeStyle = frame.border;
+        ctx.lineWidth = 8;
+        ctx.strokeRect(25, 25, 550, 550);
+        
+        ctx.strokeStyle = frame.accent;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(36, 36, 528, 528);
+
+        // Corner Accents (Corner Crosshair Lines for a Structured Look)
+        ctx.strokeStyle = frame.border;
+        ctx.lineWidth = 3;
+        const positions = [25, 575];
+        
+        // 4. Custom Message Layout Processing
+        ctx.textAlign = 'center';
+        ctx.fillStyle = frame.border;
+        ctx.font = 'bold 23px "Segoe UI", Arial, sans-serif';
+
+        const words = greetingText.split(' ');
+        let line = '';
+        let startY = 510;
+        const lineHeight = 32;
+
+        for (let n = 0; n < words.length; n++) {
+            let testLine = line + words[n] + ' ';
+            let metrics = ctx.measureText(testLine);
+            if (metrics.width > 480 && n > 0) {
+                ctx.fillText(line, 300, startY);
+                line = words[n] + ' ';
+                startY += lineHeight;
+            } else {
+                line = testLine;
+            }
+        }
+        ctx.fillText(line, 300, startY);
+    }
+
+    // Dynamic text entry tracking
+    document.getElementById('userGreeting').addEventListener('input', drawCard);
+
+    // Save File Generation Engine
+    document.getElementById('downloadDadBtn').addEventListener('click', function() {
+        const link = document.createElement('a');
+        link.download = `Fathers_Day_Card.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+
+    // Mount initial triggers
+    window.onload = () => { drawCard(); };
+    setTimeout(drawCard, 300);
+</script>
